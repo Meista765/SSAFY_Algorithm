@@ -3,7 +3,8 @@ input = sys.stdin.readline
 
 # Global variables
 S, P = map(int, input().split())
-DNA = input()
+A = input()
+count = 0
 condition = list(map(int, input().split()))
 acgt_to_idx = {
     'A' : 0,
@@ -11,7 +12,6 @@ acgt_to_idx = {
     'G' : 2,
     'T' : 3
 }
-count = 0
 
 def validation_check(acgt:list) -> bool:
     global condition
