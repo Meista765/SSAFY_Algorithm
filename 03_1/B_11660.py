@@ -10,8 +10,8 @@ for i in range(N):
     A_row = [0] + [int(x) for x in input().split()]
     A.append(A_row)
 
-for i in range(N+1):
-    for j in range(N+1):
+for i in range(1, N+1):
+    for j in range(1, N+1):
         D[i][j] = D[i-1][j] + D[i][j-1] - D[i-1][j-1] + A[i][j]
 
 for _ in range(M):
