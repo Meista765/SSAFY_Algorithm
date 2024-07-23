@@ -33,6 +33,8 @@ for idx in range(1,T+1):
                 max_value = temp
     print(f'#{idx} {max_value}')
 
+# 행렬의 맨 위쪽을 계산하는 경우랑 상단이 아닌 경우를 나눠서 생각했는데
+# 인덱스를 맞추기 위해 0을 넣었으니 일반화해도 된다는 걸 배웠습니당 !!!
 
         
 
