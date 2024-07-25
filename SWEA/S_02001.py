@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("C:/Users/SSAFY/Downloads/input.txt", 'r')
+
 T = int(input())
 
 for tc in range(1, T + 1):
