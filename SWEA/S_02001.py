@@ -1,7 +1,7 @@
 '''
-- 문제번호  : 
-- 문항명    : 
-- 핵심      : 
+- 문제번호  : 2001
+- 문항명    : 파리퇴치
+- 핵심      : 구간합
 '''
 import sys
 sys.stdin = open('C:/Users/wns95/Downloads/input.txt', 'r')
