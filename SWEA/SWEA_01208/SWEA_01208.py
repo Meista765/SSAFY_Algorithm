@@ -30,8 +30,7 @@ for i in range(1, 11):
         box_heights[min_idx] += 1
         curr_max -= 1
         curr_min += 1
-        max_idx -= 1
-        min_idx += 1
+
         diff = curr_max - curr_min
 
         # 최대 덤핑에 도달하거나 최대 최소의 차이가 1 이하면 break
@@ -47,4 +46,5 @@ for i in range(1, 11):
     diff = curr_max - curr_min
 
     print(f'#{i} {diff}')
+
 

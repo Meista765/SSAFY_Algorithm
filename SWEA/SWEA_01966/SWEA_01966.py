@@ -15,8 +15,4 @@ for tc in range(1, T + 1):
 
     sorted_list = bubble_sort(number_list)
 
-    print(f'#{tc}', end = ' ')
-    for ele in sorted_list:
-        print(ele, end = ' ')
-
-    print()
+    print(f'#{tc}', *sorted_list)
