@@ -15,8 +15,9 @@ for tc in range(1, T + 1):
     P = int(input())
     c_list = []
     for _ in range(P):
-        c_list.append(int(input)) # 나중에 인덱스 역할
-    
+        c_list.append(int(input())) # 나중에 인덱스 역할
+            
+    p_list = [0] * 5000
     
     for i in range(N):
         A_i = A[i]
@@ -24,8 +25,12 @@ for tc in range(1, T + 1):
         for j in range((A_i - 1), B_i):
             p_list[j] += 1
     
+    list_to_print = []
+    for c in c_list:
+        list_to_print.append(p_list[c - 1])
+    
     print(f'#{tc}', end = ' ')
-    print(*p_list)
+    print(*list_to_print)
     
     
     
