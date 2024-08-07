@@ -7,7 +7,8 @@ for tc in range(1, T + 1):
     text, pattern = input().split()
     N = len(text)
     M = len(pattern)
-
+    
+    # 패턴 발견하면 다음 인덱스로 넘어가게 해야 한다
     cnt = 0
     for i in range(N - M + 1):
         for j in range(M):
