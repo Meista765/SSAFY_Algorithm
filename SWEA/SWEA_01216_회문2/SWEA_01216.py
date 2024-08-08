@@ -3,3 +3,5 @@ sys.stdin = open('C:/Users/SSAFY/Desktop/git/SSAFY_Algorithm/SWEA/SWEA_01216_회
 
 for tc in range(1, 11):
     pass
+
+
