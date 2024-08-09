@@ -26,6 +26,7 @@ for i in range(N):      # 첫번째 요소 선택
     #------------------------------------------
     visit[i] = 0
 
+
 # =============================================
 # 2. 재귀 구조
 def perm(k, N):
@@ -41,3 +42,41 @@ def perm(k, N):
             #---------------------
             visit[i] = 0
 perm(0, N)
+
+
+
+# =================================
+# 얘는 pop 없으면 넣기 전 상태로 복구되지 않아 안됨
+arr = ['A', 'B', 'C']
+N = len(arr)
+order = []
+
+for i in range(N):
+    if arr[i] in order: continue
+    order.append(arr[i])
+
+    for j in range(N):
+        if arr[j] in order: continue
+        order.append(arr[j])
+
+        for k in range(N):
+            if arr[k] in order: continue
+            order.append(arr[k])
+            print(order)
+            order.pop()
+        order.pop()
+    order.pop()
+
+print('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+# 위에거 재귀
+
+def backtrack(k, n):
+    if k == n:
+        print(order)
+    else:
+        for i in range(N):
+            if arr[i] in order: continue
+            order.append(arr[i])
+            backtrack(k + 1, n)
+            order.pop()
+backtrack(0, N)

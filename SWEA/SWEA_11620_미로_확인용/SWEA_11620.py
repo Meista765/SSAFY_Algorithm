@@ -32,6 +32,7 @@ def dfs(start):
                     # 스택에 저장
                     stack.append((nr, nc))
 
+    # 3을 못 찾았으면 0
     return 0
             
 
