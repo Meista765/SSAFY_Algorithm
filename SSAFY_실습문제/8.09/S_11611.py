@@ -1,22 +1,25 @@
-import sys
-sys.stdin = open('input.txt')
 
 def perm(k,N):
-    S = 0       # sum
+    S = 0                       # sum
+    current_sum = 0 
     global min_sum
+    
+    #가지치기
+    for i in range(k):
+        current_sum += arr[i][order[i]]
+    if current_sum > min_sum:
+        return 
+        
+    
     if k == N:
-        for o in order:
-            for i in range(N):
-                S += arr[i][o]
-        if min_sum > S:
-            min_sum = S
+        min_sum = current_sum
 
     else:
         for i in range(N):
             if visited[i]:
                 continue
             order[k] = my_list[i]
-            visited[i] = k
+            visited[i] = 1
             perm(k+1,N)
             visited[i] = 0
     return min_sum
@@ -32,5 +35,6 @@ for test_case in range(1,T+1):
     order = [0] * N
     min_sum = float('inf')
 
-    result = perm(0,N)
-    print(result)
+    
+    perm(0,N)
+    print(f'#{test_case} {min_sum}')
