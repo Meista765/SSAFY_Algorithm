@@ -33,8 +33,14 @@ for i in range(1000000):
     enqueue(i)
 while not isEmpty():
     dequeue()
-print(time() - start)
+print(time() - start) # 제일 느림
+#==========================================
+def isFull():
+    return rear == len(Q) - 1
 
+def Qpeek():
+    if isEmpty(): print('Queue_Empty')
+    else: return Q[front + 1]
 #==========================================
 # 함수를 사용하지 않고
 from time import time
@@ -51,7 +57,7 @@ while front != rear:
     front += 1
     Q[front]
 
-print(time() - start)
+print(time() - start) # 위에보다 빠름
 
 # ===============================
 # 너를 위해 준비했어~~ double ended queue
@@ -66,7 +72,7 @@ for i in range(1000000):
 while Q:
     Q.popleft()
 
-print(time() - start)
+print(time() - start) # 굉장히 빠름
 
 #=======================================
 # 원형큐
@@ -88,3 +94,13 @@ def isFull():
     return front == (rear + 1) % QSIZE
 def isEmpty():
     return front == rear
+
+enqueue(1)
+enqueue(2)
+enqueue(3)
+print(Q)
+print(isFull()) # True
+
+'''
+선형 큐, 원형 큐의 isFull, isEmpty 함수는 bool을 결과로 낸다
+'''
