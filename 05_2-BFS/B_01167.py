@@ -42,6 +42,7 @@ def BFS(s):     # s: 시작 노드
 BFS(1)   # 그냥 무조건 1부터 시작하자 (임의의 시작점)
 max_dist = 0
 max_node = 0
+
 # 가장 거리가 먼 노드 찾기
 for i in range(2, N+1):     # 1번 노드를 시작점으로 넣었으니 2부터 탐색
     if dist_list[i] > max_dist:
