@@ -16,7 +16,7 @@ for test_case in range(1,T+1):
     dx = [1, 1, 0, -1, -1, -1,  0,  1]  # 좌우
     dy = [0, 1, 1,  1,  0, -1, -1, -1]  # 위아래
 
-
+    colors = [0, 2, 1]
 
     for l in range(M):
         x,y,color = map(int,input().split())    # x: col, y = row, color: 흑(1) or 백(2)
