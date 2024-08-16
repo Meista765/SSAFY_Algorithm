@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('C:/Users/SSAFY/Desktop/깃/SSAFY_Algorithm/SWEA/SWEA_02805_농작물/input.txt', 'r')
+sys.stdin = open('C:/Users/SSAFY/Desktop/깃/SSAFY_Algorithm/SWEA/SWEA_02805_마름모농작물/input.txt', 'r')
 
 T = int(input())
 
