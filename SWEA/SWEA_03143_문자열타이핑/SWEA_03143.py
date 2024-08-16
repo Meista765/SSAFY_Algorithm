@@ -13,7 +13,7 @@ for tc in range(1, T + 1):
     while i < N:
         if text[i] != pattern[j]:
             i -= j
-            j -= 1
+            j = -1
 
         i += 1
         j += 1
