@@ -29,3 +29,34 @@ for tc in range(1, T + 1):
     ans = check(board, N)
     
     print(f'#{tc} {ans}')
+    
+
+    
+# 두번째 풀기
+
+T = int(input())
+
+dr = [0, 1, 1, 1]
+dc = [1, 1, 0, -1]
+
+def check():
+    for r in range(N):
+        for c in range(N):
+            if board[r][c] == 'o':
+                for k in range(4):
+                    for m in range(1, 5): # 4칸 체크
+                        nr = r + m * dr[k]
+                        nc = c + m * dc[k]
+                        if (0 <= nr < N) and (0 <= nc < N):
+                            if board[nr][nc] != 'o':
+                                break
+                        else: break
+                    else: return 'YES'
+    return 'NO'
+
+for tc in range(1, T + 1):
+    N = int(input())
+    board = [list(input()) for _ in range(N)]
+    
+    ans = check()
+    print(f'#{tc} {ans}')
