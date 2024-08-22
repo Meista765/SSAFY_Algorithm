@@ -38,7 +38,7 @@ visited = [0] * N
 DFS(0, 0, 0)
 
 #================================================================
-itertools 사용 버전
+# itertools 사용 버전
 import sys
 from itertools import combinations
 input = sys.stdin.readline
