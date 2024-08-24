@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('C:/Users/SSAFY/Desktop/깃/SSAFY_Algorithm/SWEA/SWEA_01222_계산기1/input.txt', 'r')
+sys.stdin = open('C:/Users/LHBRR/Desktop/파이썬/알고리즘_스터디/SSAFY_Algorithm/SWEA/SWEA_01222_계산기1/input.txt', 'r')
 
 icp = {'(': 3, ')': 3, '*': 2, '/': 2, '+': 1, '-': 1} # stack에 push하기 전
 isp = {'(': 0, ')': 3, '*': 2, '/': 2, '+': 1, '-': 1} # 스택에 내부
