@@ -38,7 +38,7 @@
 
 ```
 
-<img src="./README.assets/tree.jpg" alt="tree_example" style="zoom:50%;" />
+<img src="./README.assets/tree_to_array.png" alt="tree_example" style="zoom:50%;" />
 
 > 트리 순회 연습
   - 전/중/후위 순회
@@ -53,46 +53,3 @@
     - (1, 3)
 
 ---------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
