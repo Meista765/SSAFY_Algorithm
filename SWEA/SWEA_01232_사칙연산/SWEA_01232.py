@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('C:/Users/SSAFY/Desktop/git/SSAFY_Algorithm/SWEA/SWEA_01232_사칙연산/input.txt', 'r')
+sys.stdin = open('C:/Users/LHBRR/Desktop/파이썬/알고리즘_스터디/SSAFY_Algorithm/SWEA/SWEA_01232_사칙연산/input.txt', 'r')
 
 for tc in range(1, 11):
     N = int(input())
@@ -16,8 +16,8 @@ for tc in range(1, 11):
             tree[int(input_values[0])] = [input_values[1], int(input_values[2]), int(input_values[3])]
     
     # 계산
-    for i in range(N, 1, -1):
-        if type(tree[i] == list):
+    for i in range(N, 0, -1):
+        if type(tree[i]) == list:
             operator = tree[i][0]
             c1 = tree[i][1]
             c2 = tree[i][2]
@@ -28,5 +28,6 @@ for tc in range(1, 11):
             elif operator == '*':
                 tree[i] = tree[c1] * tree[c2]
             elif operator == '/':
-                tree[i] = tree[c1] / tree[c2]
+                tree[i] = tree[c1] // tree[c2]
+                
     print(f'#{tc} {tree[1]}')
