@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('C:/Users/SSAFY/Desktop/git/SSAFY_Algorithm/SWEA/SWEA_01240_단순이진암호코드/input.txt', 'r')
+sys.stdin = open('./input.txt', 'r')
 
 code_dict = {
     '0001101':'0',
@@ -14,12 +14,33 @@ code_dict = {
     '0001011':'9'
 }
 
+# 올바른 암호인지 확인하자
+def code_vailidity(lst:list):
+    # 홀수 자리 합
+    odd_sum = 0
+    # 짝수 자리 합
+    even_sum = 0
+    
+    for idx in range(1, 9):
+        if idx % 2 == 0:
+            even_sum += lst[idx]
+        else:
+            odd_sum += lst[idx]
+    
+    # 올바른 암호면 합 return
+    if (odd_sum * 3 + even_sum) % 10 == 0:
+        return odd_sum + even_sum
+    # 아니면 0
+    else:
+        return 0
+
 T = int(input())
 
 for tc in range(1, T + 1):
     N, M = map(int, input().split())
     matrix = [list(input()) for _ in range(N)]
-    code_list = []
+    # 인덱스 쓰기 편하게 하자
+    code_list = [0]
     
     # 일단 1이 있는 행 찾기
     for r in range(N):
@@ -38,13 +59,14 @@ for tc in range(1, T + 1):
     code_inc = code_inc[(c - 55):(c + 1)]
     
     # 암호 넣자
-    code_digit = ''
     for start_idx in range(0, len(code_inc), 7):
+        code_digit = ''
         for digit in code_inc[start_idx:(start_idx + 7)]:
             code_digit += digit
         if code_digit in code_dict:
-            # 이거 잘못 합쳐짐 이거 고치면 거의 끝난다
+            # 암호 리스트 완성
             code_list.append(int(code_dict[code_digit]))
     
-    print(code_list)
+    ans = code_vailidity(code_list)
     
+    print(f'#{tc} {ans}')

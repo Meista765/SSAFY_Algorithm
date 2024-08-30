@@ -21,3 +21,35 @@ for tc in range(1, T + 1):
                 break
     
     print(f'#{tc} {arr[node]}')
+    
+    
+#### 교수님 코드
+for tc in range(1, T + 1):
+    N, M, L = map(int, input().split())
+    tree = [0] * (N + 1)
+    for _ in range(M):
+        v, val = map(int, input().split())
+        tree[v] = val
+    
+    # 얘 대신 dfs 해도 됨
+    for v in range(N-M, 0, -1):
+        tree[v] += tree[v*2]
+        if v*2 + 1 <= N:
+            tree[v] += tree[v*2+1]
+    
+    print(tree[L])
+
+
+def dfs(v):
+    if v > N:
+        return
+    l = dfs(v * 2)
+    r = dfs(v * 2 + 1)
+    
+    tree[v] = l + r
+    
+    return tree[v]
+
+dfs(1)
+print(tree[L])
+
