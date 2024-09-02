@@ -13,14 +13,17 @@ sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
 '''
 
 def backtrack(idx, pw):
+    if C - idx + len(pw) < L:           # 지금 노드에서 아무리 더 깊게 내려가봐야 pw가 L에 도달할 수 없는 경우
+        return                          # 가지치기
+    
     if len(pw) > L:                     # 암호의 길이가 L을 넘으면
         return                          # 가지치기
     
     if idx == C:                        # 리프 노드에 도달했을 때 
         if len(pw) == L:                # L개의 암호가 완성되면
             # 모음, 자음 개수 세기
-            vowel_cnt = 0           # 모음 개수
-            consonant_cnt = 0       # 자음 개수
+            vowel_cnt = 0               # 모음 개수
+            consonant_cnt = 0           # 자음 개수
             for ch in pw:
                 if ch in 'aeiou':
                     vowel_cnt += 1
