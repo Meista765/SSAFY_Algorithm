@@ -12,8 +12,8 @@ def back_track(v,cnt,s):    # v: 방문 위치, cnt = 방문 횟수, s = 현재�
 
     else:
         for i in range(1,N):
-            if v == i:      # 자기 자신 제외
-                continue
+            # if v == i:      # 자기 자신 제외
+            #     continue
             if not visited[i]:  # 방문하지 않은 곳이면
                 visited[i] = 1
                 back_track(i,cnt+1,s+arr[v][i])
