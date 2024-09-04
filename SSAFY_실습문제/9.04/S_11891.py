@@ -17,7 +17,7 @@ def merge_sort(lst):
 def merge(left,right):
     global cnt
     l = r = 0
-    result = [0] *(len(left) + len(right))
+    result = [0] * (len(left) + len(right))
 
     if left[-1] > right[-1]:
         cnt +=1
