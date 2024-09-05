@@ -21,22 +21,40 @@ goal : 궁수의 공격으로 제거할 수 있는 적의 최대 수
 '''
 
 from collections import deque
+import copy
+
+DEBUG = 1
 
 def BFS(start):
+    global kill
     queue = deque()
     for archer_pos in start:
         queue.append(archer_pos)
-    print(queue)
+    while queue:
+        r, c, cnt = queue.popleft()
+        for k in range(3):
+            nr = r + dr[k]
+            nc = c + dc[k]
+            if 0 <= nr < N and 0 <= nc < M and cnt < D:
+                if arr_copy[nr][nc] == 1:
+                    arr_copy[nc][nc] = 0
+                    kill += 1
+                    break
+                else:
+                    queue.append((nr, nc, cnt+1))
 
 
 N, M, D = map(int, input().split())     # N: 격자판 행 수, M: 격자판 열 수, D: 궁수 공격 거리 제한
 arr = [list(map(int, input().split())) for _ in range(N)]   # 격자 판
 arr += [[2] * N]                        # N+1 행에 성 만들어줌 (2는 성을 의미)
+kill_lst = []                           # 케이스별 킬 카운트 담을 리스트
 dr, dc = [-1, 0, 0], [0, -1, 1]         # 상 좌 우
 
 # NC3 구현 (궁수 위치 정하기)
 for i in range(1 << M):                 # 0부터 2^M까지 순회
-    arr[-1] = [2] * N                   # N+1 행 초기화 (궁수 재배치를 위해)
+    arr_copy = copy.deepcopy(arr)
+    kill = 0                                # 킬 카운트
+    arr_copy[-1] = [2] * N                   # N+1 행 초기화 (궁수 재배치를 위해)
     archers = [0] * M                   # 아처 위치 목록 초기화
     cnt = 0                             # 3명의 아처만 배치하기 위한 카운트 변수
     for j in range(M):                  # 0 ~ M까지 j에 차례로 넣으면서
@@ -47,5 +65,17 @@ for i in range(1 << M):                 # 0부터 2^M까지 순회
         start = []                      # BFS에 넣을 스타트 좌표 리스트
         for c in range(M):              # N+1 행에 위에서 만들어진 패턴대로 아처 좌표 뽑기
             if archers[c]:
-                start.append((N, c))    # 좌표를 start에 넣어주기
-        BFS(start)                      # BFS에 start 인자로 주기
+                start.append((N, c, 0)) # 좌표와 이동 거리를 start에 넣어주기
+        if DEBUG: print('아처 위치, 이동거리', start)
+        if DEBUG: print('배열', arr_copy)
+        down_cnt = 0
+        while down_cnt < N:
+            down_cnt += 1
+            BFS(start)                      # BFS에 start 인자로 주기
+            arr_copy = [[0]*(M)] + arr_copy
+            arr_copy[-2] = arr_copy[-1]
+            arr_copy.pop()
+            if DEBUG: print('배열', arr_copy)
+        kill_lst.append(kill)
+
+print(max(kill_lst))
