@@ -26,7 +26,7 @@ T = int(input())
 for tc in range(1, T + 1):
     N, M = map(int, input().split())
 
-    search_list = list(map(int, input().split()))
+    search_list = sorted(list(map(int, input().split())))
     target_list = list(map(int, input().split()))
 
     cnt = 0
