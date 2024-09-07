@@ -1,5 +1,5 @@
-# import sys
-# sys.stdin = open('input.txt')
+import sys
+sys.stdin = open('input.txt')
 from collections import deque
 
 def bfs(i,j):
@@ -12,7 +12,7 @@ def bfs(i,j):
         for k in range(4):
             nr = v[0] + dr[k]
             nc = v[1] + dc[k]
-            if 0 <= nr < N and 0 <= nc < N and arr[v[0]][v[1]]+1 == arr[nr][nc]:
+            if 0 <= nr < N and 0 <= nc < N and arr[v[0]][v[1]]+1 == arr[nr][nc]:    # 현재 위치보다 정확히 1 크면 이동 가능
                 q.append((nr, nc))
                 cnt += 1
     return cnt
@@ -26,14 +26,16 @@ for test_case in range(1,T+1):
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
     max_cnt = 1
-    x = y = 0
+    x, y = 0, 0
     for i in range(N):
         for j in range(N):
-            cnt = bfs(i, j)
-            if cnt >= max_cnt:
-                if arr[x][y] > arr[i][j]:
-                    x, y = i, j
-                max_cnt = cnt
+            result = bfs(i, j)
+            if result > max_cnt:
+                max_cnt = result
+                x, y = i, j
+            elif result == max_cnt and arr[x][y] > arr[i][j]:   # 같을 때 더 작은 값이 정
+                x, y = i, j
+
 
     print(f'#{test_case} {arr[x][y]} {max_cnt}')
 

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a6dddcf-0c33-4594-9840-9829cf4eb27e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSAFY_실습문제/9.06/S_01861.py" beforeDir="false" afterPath="$PROJECT_DIR$/SSAFY_실습문제/9.06/S_01861-BFS.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +39,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.S_11893">
-    <configuration name="B_01244" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.S_01861-단순구현">
+    <configuration name="S_01861-단순구현" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SSAFY_Algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -49,11 +51,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SSAFY_실습문제/im준비" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SSAFY_실습문제/9.06" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_실습문제/im준비/B_01244.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_실습문제/9.06/S_01861-단순구현.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -62,7 +64,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="B_02578" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="S_01861-BFS" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SSAFY_Algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,11 +72,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SSAFY_실습문제/im준비" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SSAFY_실습문제/9.06" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_실습문제/im준비/B_02578.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_실습문제/9.06/S_01861-BFS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.S_01861-단순구현" />
+        <item itemvalue="Python.S_01861-BFS" />
         <item itemvalue="Python.S_11893" />
         <item itemvalue="Python.S_11892" />
         <item itemvalue="Python.S_11891" />
-        <item itemvalue="Python.B_02578" />
-        <item itemvalue="Python.B_01244" />
       </list>
     </recent_temporary>
   </component>
