@@ -23,7 +23,7 @@ def dijkstra(s):
                     diff = 0
 
                 if D[nr][nc] > d + 1 + diff:
-                    D[nr][nc] = d + 1 + diff
+                    D[nr][nc] =  d + 1 + diff
                     heappush(hq,(D[nr][nc], (nr,nc)))
 
 
