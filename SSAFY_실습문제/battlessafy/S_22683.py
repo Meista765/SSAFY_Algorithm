@@ -10,7 +10,7 @@ def find_start():
             if arr[i][j] == 'X':
                 return (i,j)
 
-def find_end()
+def find_end():
     for i in range(N):
         for j in range(N):
             if arr[i][j] == 'Y':
@@ -22,12 +22,12 @@ def find_end()
 
 def dijkstra(s,cur_direction):
     q = deque()
-    q.append([s, cur_direction, K])
+    q.append([s, cur_direction])
     d[s[0]][s[1]][0] = 0
-    arr[s[0]][s[1]] = 'G'
+    arr[s[0]][s[1]] = 'G'               # 처음 위치를 지나갈 수 있게 'G'로 변환
 
     while q:
-        v, cur_direction, k = q.popleft()
+        v, cur_direction = q.popleft()
         for l in range(4):
             nr = v[0] + dr[l]
             nc = v[1] + dc[l]
@@ -36,9 +36,10 @@ def dijkstra(s,cur_direction):
                     if cur_direction == l:
                         if d[nr][nc][0] > d[v[0]][v[1]][0]+1:
                             d[nr][nc][0] = d[v[0]][v[1]][0]+1
-
+                            q.append([(nr,nc), l])
                         elif d[nr][nc][0] == d[v[0]][v[1]][0]+1 and d[nr][nc][1] > d[v[0]][v[1]][1]:
                             d[nr][nc][1] = d[v[0]][v[1]][1]
+                            q.append([(nr, nc), l])
                     elif abs(cur_direction-l) == 2:
                         if d[nr][nc][0] > d[v[0]][v[1]][0]+3:
                             d[nr][nc][0] = d[v[0]][v[1]][0] + 3
@@ -72,15 +73,10 @@ def dijkstra(s,cur_direction):
                             d[nr][nc][1] -= 1
 
 
-
-
-
-
 T = int(input())
 for test_case in range(1, T + 1):
     N, K = map(int, input().split())
     arr = [list(input()) for _ in range(N)]
-    # d = [[float('inf')] * N for _ in range(N)]  # 최소 조작을 나타내는 배열
     d = [[[float('inf'), K] for _ in range(N)] for _ in range(N)]
     # 상좌하우
     dr = [-1, 0, 1, 0]
