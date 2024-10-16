@@ -22,6 +22,8 @@ def dfs(level, cnt):
                         r2, c2 = chicken_location[j]
                         check = min(check, (abs(r1 - r2) + abs(c1 - c2)))
                 total_distance += check
+                if total_distance > min_val:
+                    return
             if min_val > total_distance:
                 min_val = total_distance
         return
