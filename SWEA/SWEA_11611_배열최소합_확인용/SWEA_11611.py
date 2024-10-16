@@ -31,4 +31,37 @@ for tc in range(1, T + 1):
     print(f'#{tc} {min_sum}')
 
 
+#============================================================================
+
+def dfs(n,sm) :
+    global ans
+ 
+    # 가지치기
+    if sm >= ans :
+        return
+ 
+ 
+    if n == N :
+        # 최솟값 갱신
+        ans = min(ans,sm)
+        return
+     
+    # n : 행, j : 열 / 하나씩 확인해보기
+    for j in range(N) :
+        if visit[j] == 0 :
+            visit[j] = 1
+            dfs(n+1, sm+arr[n][j])
+            visit[j] = 0
+ 
+ 
+T = int(input())
+for tc in range(1,T+1) :
+    N = int(input())
+    arr = [list(map(int,input().split())) for _ in range(N)]
+    ans = 999999999999
+    visit = [0] * N     # 열 사용 표시
+ 
+    dfs(0,0)
+ 
+    print(f'#{tc} {ans}')
 
