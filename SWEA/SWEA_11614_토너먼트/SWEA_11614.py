@@ -1,34 +1,25 @@
 import sys
-sys.stdin = open('C:/Users/SSAFY/Desktop/깃/SSAFY_Algorithm/SWEA/SWEA_11614_토너먼트/sample_input.txt', 'r')
+sys.stdin = open('sample_input.txt', 'r')
 
-
-## 힌트
-# 최소값 구하기
-# 문제를 시작, 끝 인덱스로 표현
-# mid = (s + e) // 2
-# s == e, arr[s] 가 답이다
-# 그 외, min(min(s, mid), min(mid + 1, e))
-
-## 토너먼트 카드 게임
-
-arr = [60, 89, 39, 28, 49, 8, 16, 67, 11, 85]
-# 최소값 구하기
-# 문제를 시작, 끝 인덱스로 표현
-# mid = (s + e) // 2
-# s == e, arr[s]
-# 그외, min(min(s, mid), min(mid + 1, e))
 def find_min(s, e):
+    # 중단
     if s == e:
         return s
     else:
         mid = (s + e) // 2
         lidx = find_min(s, mid)
         ridx = find_min(mid + 1, e)
-        if arr[lidx] < arr[ridx]:
-            return lidx
-        return ridx
+        if arr[lidx] == arr[ridx]:
+            return min(lidx, ridx)
+        elif abs(arr[lidx] - arr[ridx]) == 1:
+            return max(lidx, ridx)
+        else:
+            return min(lidx, ridx)
 
-ret = find_min(0, len(arr) - 1)
-print(ret, arr[ret])
 
+for tc in range(1, int(input()) + 1):
+    N = int(input())
+    arr = list(map(int, input().split()))
 
+    ret = find_min(0, N - 1)
+    print(f'#{tc} {ret}')
