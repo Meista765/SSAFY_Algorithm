@@ -1,42 +1,42 @@
 import sys
 sys.stdin = open('sample_input.txt', 'r')
 
-# direction: 현재 진행 방향, count: 디저트 먹은 수, eaten: 먹은 디저트 종류, turn_count: 방향 전환 수
-def dfs(r, c, start_r, start_c, direction, count, eaten, turn_count):
-    global max_count
-    # 사각형이 완성되었고, 시작 지점에 다다르면 업데이트 후 종료
-    if turn_count == 3 and r == start_r and c == start_c:
-        max_count = max(max_count, count)
-        return
-    # 시작 지점을 찾지 못하고 계속 탐색하다가 방향이 전환되면 즉시 종료
-    if turn_count == 4:
-        return
-    
-    # 현재 진행 방향 그대로 가거나 방향 전환하기
-    ## => 지금 방향 그대로 dfs or 방향을 바꾼 뒤 dfs
-    for i in range(2):  
-        new_direction = (direction + i) % 4
-        nr = r + dr[new_direction]
-        nc = c + dc[new_direction]
+di = [-1, -1, 1, 1]
+dj = [1, -1, -1, 1]
 
-        # 이동 가능하고, 아직 안 먹은 종류면 탐색
-        if 0 <= nr < N and 0 <= nc < N and field[nr][nc] not in eaten:
-            eaten.add(field[nr][nc])
-            # 새로운 좌표로 이동 후 계속 탐색
-            ## 일단 이동은 했으니 먹은 횟수와 종류는 기록//방향을 바꾸었는지, 아닌지에 따라 방향 전환 수 추가
-            dfs(nr, nc, start_r, start_c, new_direction, count + 1, eaten, turn_count + (i == 1))
-            # 다시 돌아올 때 디저트 제거
-            eaten.remove(field[nr][nc])
 
-for tc in range(1, int(input()) + 1):
+def des(i, j, d): # i,j는 시작하는 좌표의 행,열 d는 방향이다.
+    global max_V
+    if d < 3:
+        tmp = d + 2
+    else:
+        tmp = d + 1
+    for k in range(d, tmp): # 현재 오는 방향, 그 다음방향으로 2가지 선택지가 있다
+        ni, nj = i + di[k], j + dj[k]
+        if si == ni and sj == nj: # 처음 시작점으로 돌아오는 경우, max값 갱신
+            max_V = max(sum(dessert), max_V)
+            return
+        if 0 <= ni < N and 0 <= nj < N :
+            if not dessert[arr[ni][nj]]: # 이전에 먹은 디저트가 아니라면,
+                dessert[arr[ni][nj]] = 1
+                des(ni, nj, k)
+                dessert[arr[ni][nj]] = 0
+ 
+T = int(input())
+for tc in range(1, T+1):
     N = int(input())
-    field = [list(map(int, input().split())) for _ in range(N)]
-    dr = [-1, -1, 1, 1]
-    dc = [1, -1, -1, 1]
-    max_count = -1
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    visited = [[0]*N for _ in range(N)]
+    max_V = -1
+ 
+    # 탐색을 시작 할 좌표 선택
+    for i in range(N - 2):
+        for j in range(1, N - 1):
+            si, sj = i, j
+            dessert = [0]*101
+            dessert[arr[si][sj]] = 1
+            des(si, sj, 0)
+ 
+    print(f"#{tc} {max_V}")
 
-    for r in range(N):
-        for c in range(N):
-            dfs(r, c, r, c, 0, 0, set([field[r][c]]), 0)
 
-    print(f'#{tc} {max_count}')
