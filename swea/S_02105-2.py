@@ -5,18 +5,15 @@ sys.stdin = open('S_02105.txt')
 def dfs(sr, sc, path, way):
     global max_cnt
 
+    if way > 3:
+        return
     # 종료 조건 -> 시작점에 되돌아 왔을 때
     if sr == i and sc == j and len(path) >= 4:
 
         max_cnt = max(len(path), max_cnt)
         return
 
-    if way < 3:
-        d = 2
-    else:
-        d = 1
-
-    for k in range(way, way+d):         # 직진 or 꺾기
+    for k in range(way, way+2):         # 직진 or 꺾기
         nr = sr + dr[k]
         nc = sc + dc[k]
         if 0 <= nr < N and 0 <= nc < N and arr[nr][nc] not in path:      # 인덱스 안 벗어나고 # 지금까지 들린 디저트 가게와 겹치지 않으면
@@ -33,8 +30,8 @@ for test_case in range(1,T+1):
     # path = []               # 가는 길에 들렸던 디저트 카페 저장
 
     # 시계 방향: 우하, 좌하, 좌상, 우상
-    dr = [1, 1, -1, -1]
-    dc = [1, -1, -1, 1]
+    dr = [1, 1, -1, -1, 1]
+    dc = [1, -1, -1, 1, 1]
 
     max_cnt = -1
     for i in range(N):
