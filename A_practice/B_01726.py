@@ -2,8 +2,8 @@
 import sys
 from collections import deque
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
-# sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
-# input = sys.stdin.readline
+#sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
+#input = sys.stdin.readline
 
 # 입력 받기
 ROW, COL = map(int, input().split())  # 행, 열
