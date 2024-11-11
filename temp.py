@@ -1,4 +1,5 @@
-a = list(map(int, input()))
+w = 3
 
-print(a)
-print(type(a[0]))
+e = (w + 1) % 4
+
+print(e)

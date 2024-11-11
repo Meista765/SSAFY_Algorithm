@@ -38,6 +38,8 @@ def cafe_tour(start_r, start_c, start_direction):
             if (nr, nc) == (start_r, start_c):
                 max_count = max(max_count, visit_cnt)
                 return 
+            elif visit_cnt == 1:
+                current_direction = (current_direction + 1) % 4
             # 그 외의 경우 -> 방향만 바꾸기
             else:
                 if formal_attempt:
