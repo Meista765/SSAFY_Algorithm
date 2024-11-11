@@ -1,42 +1,70 @@
 import sys
 sys.stdin = open('sample_input.txt', 'r')
 
-di = [-1, -1, 1, 1]
-dj = [1, -1, -1, 1]
+dr = [-1, -1, 1, 1]
+dc = [1, -1, -1, 1]
 
+def cafe_tour(start_r, start_c, start_direction):
+    global max_count
 
-def des(i, j, d): # i,j는 시작하는 좌표의 행,열 d는 방향이다.
-    global max_V
-    if d < 3:
-        tmp = d + 2
-    else:
-        tmp = d + 1
-    for k in range(d, tmp): # 현재 오는 방향, 그 다음방향으로 2가지 선택지가 있다
-        ni, nj = i + di[k], j + dj[k]
-        if si == ni and sj == nj: # 처음 시작점으로 돌아오는 경우, max값 갱신
-            max_V = max(sum(dessert), max_V)
-            return
-        if 0 <= ni < N and 0 <= nj < N :
-            if not dessert[arr[ni][nj]]: # 이전에 먹은 디저트가 아니라면,
-                dessert[arr[ni][nj]] = 1
-                des(ni, nj, k)
-                dessert[arr[ni][nj]] = 0
- 
-T = int(input())
-for tc in range(1, T+1):
+    ate = {field[start_r][start_c]}
+    current_r, current_c = (start_r, start_c)
+    visit_cnt = 1                               # 현재까지 방문한 카페 수
+    switch_cnt = 0                              # 방향 전환 횟수
+    
+    current_direction = start_direction
+    formal_attempt = False
+
+    while True:
+        nr = current_r + dr[current_direction]
+        nc = current_c + dc[current_direction]
+
+        # 앞으로 나아가지 않고 방향 전환만 할 때는 formal_attempt를 True로 바꾸어준다
+        # formal_attempt가 True인데 또 다시 방향만 바꿀 경우 바로 함수 종료
+        # 인덱스 벗어날 때
+        if not (0 <= nr < N) or not (0 <= nc < N):
+            # 첫 시작부터 벗어나도 어차피 다른 방향 탐색하니까 종료
+            if formal_attempt or visit_cnt == 1:
+                return
+            else:
+                current_direction = (current_direction + 1) % 4
+                switch_cnt += 1
+                if switch_cnt > 3:
+                    return
+                formal_attempt = True
+        # 이미 먹은 디저트일 때
+        elif field[nr][nc] in ate:
+            # 시작 지점으로 돌아왔다면
+            if (nr, nc) == (start_r, start_c):
+                max_count = max(max_count, visit_cnt)
+                return 
+            # 그 외의 경우 -> 방향만 바꾸기
+            else:
+                if formal_attempt:
+                    return
+                else:
+                    current_direction = (current_direction + 1) % 4
+                    switch_cnt += 1
+                    if switch_cnt > 3:
+                        return
+                    formal_attempt = True
+        # 앞으로 나아갈 경우, formal_attempt 다시 False로
+        else:
+            ate.add(field[nr][nc])
+            visit_cnt += 1
+            current_r, current_c = nr, nc
+            formal_attempt = False
+
+for tc in range(1, int(input()) + 1):
     N = int(input())
-    arr = [list(map(int, input().split())) for _ in range(N)]
-    visited = [[0]*N for _ in range(N)]
-    max_V = -1
- 
-    # 탐색을 시작 할 좌표 선택
-    for i in range(N - 2):
-        for j in range(1, N - 1):
-            si, sj = i, j
-            dessert = [0]*101
-            dessert[arr[si][sj]] = 1
-            des(si, sj, 0)
- 
-    print(f"#{tc} {max_V}")
+    
+    field = [list(map(int, input().split())) for _ in range(N)]
 
+    max_count = -1
 
+    for r in range(N):
+        for c in range(N):
+            for i in range(4):
+                cafe_tour(r, c, i)
+    
+    print(f'#{tc} {max_count}')
