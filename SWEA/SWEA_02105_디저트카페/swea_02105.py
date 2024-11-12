@@ -14,22 +14,13 @@ def cafe_tour(start_r, start_c, start_direction):
     
     current_direction = start_direction
     formal_attempt = False
-    ##### 지울 것 #####
-    path = [(start_r, start_c)]
-    ##################
+
     while True:
         nr = current_r + dr[current_direction]
         nc = current_c + dc[current_direction]
 
         if (nr, nc) == (start_r, start_c):
-            if max_count < visit_cnt:
-                max_count = visit_cnt
-                ##### 지울 것 #####
-                debug['max_count'] = max_count
-                debug['start_position'] = (start_r, start_c)
-                debug['start_direction'] = start_direction
-                debug['path'] = path
-                ##################
+            max_count = max(max_count, visit_cnt)
             return 
 
         # 인덱스 벗어나거나 이미 먹은 디저트인 경우
@@ -46,7 +37,6 @@ def cafe_tour(start_r, start_c, start_direction):
                 formal_attempt = True 
         # 앞으로 나아갈 경우, formal_attempt 다시 False로
         else:
-            path.append((nr, nc))
             ate.add(field[nr][nc])
             visit_cnt += 1
             current_r, current_c = nr, nc
@@ -58,13 +48,11 @@ for tc in range(1, int(input()) + 1):
     field = [list(map(int, input().split())) for _ in range(N)]
 
     max_count = -1
-    ##### 지울 것 #####
-    debug = {}
-    ##################
+
     for r in range(N):
         for c in range(N):
             for i in range(4):
                 if (r, c) not in [(0,0), (0,N-1), (N-1,0), (N-1,N-1)]:
                     cafe_tour(r, c, i)
     
-    print(f'#{tc} {debug}')
+    print(f'#{tc} {max_count}')
